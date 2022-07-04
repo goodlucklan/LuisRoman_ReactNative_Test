@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ScreenTemplate Component Render a global Component 1`] = `<ScreenTemplate />`;

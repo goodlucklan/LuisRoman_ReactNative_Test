@@ -1,18 +1,22 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import { Provider } from "react-redux";
+import store from "./src/redux/store/redux";
+import TabNavigator from "./src/navigation/TabNavigator/TabNavigator";
+import { NavigationContainer } from "@react-navigation/native";
+
+const client = new ApolloClient({
+  uri: "https://countries.trevorblades.com",
+  cache: new InMemoryCache(),
+});
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-    </View>
+    <Provider store={store}>
+      <ApolloProvider client={client}>
+        <NavigationContainer>
+          <TabNavigator />
+        </NavigationContainer>
+      </ApolloProvider>
+    </Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
